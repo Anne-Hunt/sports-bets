@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sports Bets</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-secondary">
+    <header class="container-fluid">
+        <section class="row">
+            <div class="col-12 text-center text-danger bg-dark opacity-75 shadow p-5">
+                <h1>Sports Bets and More</h1>
+            </div>
+        </section>
+    </header>
+    <main class="container-fluid">
+        <section class="row justify-content-center p-2">
+            <div class="col-3">
+                <div class="card bg-success">
+                    <div class="card card-title text-center">
+                        <h1>BANK</h1>
+                    </div>
+                    <div id="bank" class="card-body"></div>
+                </div>
+            </div>
+        </section>
+        <section class="row teams">
+            <div class="col-6 hooligans bg-primary rounded p-3 text-center">
+                <h2>Hooligans</h2>
+                <div id="hooligansPlayers"></div>
+            </div>
+            <div class="col-6 ruffians bg-white rounded p-3 text-center">
+                <h2>Ruffians</h2>
+                <div id="ruffiansPlayers"></div>
+            </div>
+        </section>
+        <section class="row bets">
+            <div class="col-6">
+                <div class="row p-3 text-light">
+                    <div class="col-2">
+                        <button id="hooligans5" class="class-2 btn btn-success rounded shadow"
+                            onclick="betMoney(hooligans, 5)">Bet
+                            5</button>
+                    </div>
+                    <div class="col-2">
+                        <button id="hooligans25" class="class-2 btn btn-warning rounded shadow"
+                            onclick="betMoney(hooligans, 25)">Bet 25</button>
+
+                    </div>
+                    <div class="col-2">
+                        <button id="hooligans100" class="class-2 btn btn-danger rounded shadow"
+                            onclick="betMoney(hooligans, 100)">Bet 100</button>
+                    </div>
+                    <div class="col-2">
+                        <button id="hooligansAll" class="class-2 btn btn-dark rounded shadow"
+                            onclick="betMoney(hooligans, '${bank}')">Bet All</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row p-3 text-light">
+                    <div class="col-2">
+                        <button id="ruffians5" class="class-2 btn btn-success rounded shadow"
+                            onclick="betMoney(ruffians, 5)">Bet 5</button>
+                    </div>
+                    <div class="col-2">
+                        <button id="ruffians25" class="class-2 btn btn-warning rounded shadow"
+                            onclick="betMoney(ruffians, 25)">Bet 25</button>
+                    </div>
+                    <div class="col-2">
+                        <button id="ruffians100" class="class-2 btn btn-danger rounded shadow"
+                            onclick="betMoney(ruffians, 100)">Bet 100</button>
+                    </div>
+                    <div class="col-2">
+                        <button id="ruffiansAll" class="class-2 btn btn-dark rounded shadow"
+                            onclick="betMoney(ruffians, '${bank}')">Bet All</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="container-fluid">
+        <section class="row outcomes">
+            <div class="col">
+                <div id="outcome">
+
+                </div>
+            </div>
+
+        </section>
+    </footer>
+    <script src="app.js"></script>
+</body>
+
+</html>
