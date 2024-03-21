@@ -130,6 +130,8 @@ let ruffians = []
 
 let hooligansScore = 0
 let ruffiansScore = 0
+let ruffianScoreElem = document.getElementById('ruffianScore')
+let hooliganScoreElem = document.getElementById('hooliganScore')
 
 let hooligansHTML = ''
 let ruffiansHTML = ''
@@ -154,6 +156,9 @@ function draftPlayers() {
     console.log(hooligans)
     console.log(ruffians)
 
+    ruffianScoreElem.innerText = ''
+    hooliganScoreElem.innerText = ''
+
     checkSkill()
 }
 
@@ -175,6 +180,7 @@ function checkSkill() {
     console.log(hooligansSum)
     console.log(ruffiansSum)
     drawGamePlayersBank()
+    betMoney()
 }
 
 function drawGamePlayersBank() {
@@ -191,21 +197,17 @@ function drawGamePlayersBank() {
 }
 
 function betMoney(team, amount) {
-    let kitty = amount
+
+    let kitty = Number(amount)
     let teamBet = team
 
     bank -= kitty
 
-    let ruffianScoreElem = document.getElementById('ruffianScore')
-    let hooliganScoreElem = document.getElementById('hooliganScore')
 
-    ruffianScoreElem.innerHTML = `${ruffiansScore}`
-    hooliganScoreElem.innerHTML = `${hooligansScore}`
-
-    checkOutcomes(teamBet, amount)
+    checkOutcomes(teamBet, kitty)
 }
 
-function checkOutcomes(teamBet, amount) {
+function checkOutcomes(teamBet, kitty) {
     let winner
 
     if (ruffiansScore > hooligansScore) {
@@ -216,14 +218,17 @@ function checkOutcomes(teamBet, amount) {
 
     if (teamBet == winner) {
         console.log('You won!')
-        bank += (amount * 2)
+        bank += (kitty * 2)
     } else {
         console.log('You lose!')
-        bank -= amount
+        bank -= kitty
     }
 
-    //NOTE put in option to go again, hide buttons until selected
-    //goBroke()
+    ruffianScoreElem.innerHTML = `<p>Score: ${ruffiansScore}</p>`
+    hooliganScoreElem.innerHTML = `<p>Score: ${hooligansScore}</p>`
+
+    document.getElementById('reset').classList.toggle('hide')
+    goBroke()
 }
 
 function resetGame() {
@@ -233,8 +238,8 @@ function resetGame() {
     hooligansHTML = ''
     hooligansScore = 0
     ruffiansScore = 0
-    //ruffianScoreElem = ''
-    //hooliganScoreElem = ''
+
+    document.getElementById('bet-again').classList.toggle('hide')
 }
 
 function goBroke() {
