@@ -123,16 +123,20 @@ const players = [
     },
 ]
 
-const hooligans = []
-const ruffians = []
+let hooligans = []
+let ruffians = []
+
+// NOTE put in HTML
 
 let hooligansScore = 0
 let ruffiansScore = 0
 
+let hooligansHTML = ''
+let ruffiansHTML = ''
+
 let kitty = 0
 
 goBroke()
-drawGamePlayersBank()
 
 function draftPlayers() {
 
@@ -150,7 +154,6 @@ function draftPlayers() {
     console.log(hooligans)
     console.log(ruffians)
 
-    drawGamePlayersBank()
     checkSkill()
 }
 
@@ -171,17 +174,16 @@ function checkSkill() {
 
     console.log(hooligansSum)
     console.log(ruffiansSum)
-
     drawGamePlayersBank()
 }
+
 function drawGamePlayersBank() {
     let bankElem = document.getElementById('bank')
     let ruffiansPlayersElem = document.getElementById('ruffiansPlayers')
     let hooligansPlayersElem = document.getElementById('hooligansPlayers')
 
-    let hooligansHTML = ``
-    let ruffiansHTML = ``
-    hooligans.forEach(hooligan.name => { hooligansHTML = + `${hooligan.picture}` })
+    hooligans.forEach(hooligan => { hooligansHTML += `<span>${hooligan.emoji}</span>` })
+    ruffians.forEach(ruffian => { ruffiansHTML += `<span>${ruffian.emoji}</span>` })
 
     ruffiansPlayersElem.innerHTML = ruffiansHTML
     hooligansPlayersElem.innerHTML = hooligansHTML
@@ -189,30 +191,54 @@ function drawGamePlayersBank() {
 }
 
 function betMoney(team, amount) {
-    let kitty = 0
+    let kitty = amount
     let teamBet = team
 
-    kitty += amount
-    bank -= amount
+    bank -= kitty
 
-    checkOutcomes(teamBet, kitty)
+    let ruffianScoreElem = document.getElementById('ruffianScore')
+    let hooliganScoreElem = document.getElementById('hooliganScore')
+
+    ruffianScoreElem.innerHTML = `${ruffiansScore}`
+    hooliganScoreElem.innerHTML = `${hooligansScore}`
+
+    checkOutcomes(teamBet, amount)
 }
 
-function checkOutcomes(teamBet, kitty) {
+function checkOutcomes(teamBet, amount) {
     let winner
+
+    if (ruffiansScore > hooligansScore) {
+        winner = ruffians
+    } else {
+        winner = hooligans
+    }
 
     if (teamBet == winner) {
         console.log('You won!')
-        bank += (kitty * 2)
+        bank += (amount * 2)
     } else {
         console.log('You lose!')
-        kitty = 0
+        bank -= amount
     }
-    goBroke()
+
+    //NOTE put in option to go again, hide buttons until selected
+    //goBroke()
 }
 
-function goBroke(bank) {
-    if (bank <= 0) {
+function resetGame() {
+    ruffians = []
+    hooligans = []
+    ruffiansHTML = ''
+    hooligansHTML = ''
+    hooligansScore = 0
+    ruffiansScore = 0
+    //ruffianScoreElem = ''
+    //hooliganScoreElem = ''
+}
+
+function goBroke() {
+    if (bank < 0) {
         console.log('You are broke!')
         window.alert('You are broke, time to quit!')
     } else {

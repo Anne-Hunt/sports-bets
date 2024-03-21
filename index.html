@@ -14,38 +14,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-secondary">
+<body class="background">
     <header class="container-fluid">
         <section class="row">
-            <div class="col-12 text-center text-danger bg-dark opacity-75 shadow p-5">
+            <div class="col-12 text-center text-danger bg-dark shadow p-3">
                 <h1>Sports Bets and More</h1>
             </div>
         </section>
     </header>
     <main class="container-fluid">
+        <section class="row d-flex justify-content-center p-3">
+            <div id="bet-again" class="col-3 d-flex justify-content-center">
+                <button id="btnAgain" class="btn btn-success shadow">Bet Again</button>
+            </div>
+        </section>
         <section class="row justify-content-center p-2">
-            <div class="col-3">
+            <div class="col-3 p-2">
                 <div class="card bg-success">
                     <div class="card card-title text-center">
                         <h1>BANK</h1>
                     </div>
-                    <div id="bank" class="card-body"></div>
+                    <h1 id="bank" class="card-body text-light text-center"></h1>
                 </div>
             </div>
         </section>
-        <section class="row teams">
-            <div class="col-6 hooligans bg-primary rounded p-3 text-center">
+        <section class="row teams justify-content-around">
+            <div class="col-5 hooligans bg-primary rounded p-3 text-center shadow">
+                <p> <span id="hooliganScore"></span></p>
                 <h2>Hooligans</h2>
                 <div id="hooligansPlayers"></div>
             </div>
-            <div class="col-6 ruffians bg-white rounded p-3 text-center">
+            <div class="col-5 ruffians bg-white rounded p-3 text-center shadow">
+                <p> <span id="ruffianScore"></span></p>
                 <h2>Ruffians</h2>
                 <div id="ruffiansPlayers"></div>
             </div>
         </section>
         <section class="row bets">
             <div class="col-6">
-                <div class="row p-3 text-light">
+                <div class="row p-3 text-light justify-content-center">
                     <div class="col-2">
                         <button id="hooligans5" class="class-2 btn btn-success rounded shadow"
                             onclick="betMoney(hooligans, 5)">Bet
@@ -62,12 +69,12 @@
                     </div>
                     <div class="col-2">
                         <button id="hooligansAll" class="class-2 btn btn-dark rounded shadow"
-                            onclick="betMoney(hooligans, '${bank}')">Bet All</button>
+                            onclick="betMoney(hooligans, `${bank}`)">Bet All</button>
                     </div>
                 </div>
             </div>
             <div class="col-6">
-                <div class="row p-3 text-light">
+                <div class="row p-3 text-light d-flex justify-content-center">
                     <div class="col-2">
                         <button id="ruffians5" class="class-2 btn btn-success rounded shadow"
                             onclick="betMoney(ruffians, 5)">Bet 5</button>
@@ -82,21 +89,26 @@
                     </div>
                     <div class="col-2">
                         <button id="ruffiansAll" class="class-2 btn btn-dark rounded shadow"
-                            onclick="betMoney(ruffians, '${bank}')">Bet All</button>
+                            onclick="betMoney(ruffians, `${bank}`)">Bet All</button>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
-    <footer class="container-fluid">
         <section class="row outcomes">
             <div class="col">
-                <div id="outcome">
-
+                <div id="outcome" class="d-flex justify-content-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                        <title>ticket</title>
+                        <path
+                            d="M15.58,16.8L12,14.5L8.42,16.8L9.5,12.68L6.21,10L10.46,9.74L12,5.8L13.54,9.74L17.79,10L14.5,12.68M20,12C20,10.89 20.9,10 22,10V6C22,4.89 21.1,4 20,4H4A2,2 0 0,0 2,6V10C3.11,10 4,10.9 4,12A2,2 0 0,1 2,14V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V14A2,2 0 0,1 20,12Z" />
+                    </svg>
                 </div>
             </div>
 
         </section>
+    </main>
+    <footer class="bg-dark text-light text-center p-2">
+        <h2>Made by Anne Hunt</h2>
     </footer>
     <script src="app.js"></script>
 </body>
